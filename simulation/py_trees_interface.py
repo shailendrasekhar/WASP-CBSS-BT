@@ -10,7 +10,7 @@ class PyTree(pt.trees.BehaviourTree):
     """
     A class containing a behavior tree. Inherits from the py tree BehaviorTree class.
     """
-    def __init__(self, string, behaviors, world_interface=None, root=None, verbose=False):
+    def __init__(self, string, behaviors, world_interface=None, root=None, verbose=True):
         # pylint: disable=too-many-arguments
         if root is not None:
             self.root = root
