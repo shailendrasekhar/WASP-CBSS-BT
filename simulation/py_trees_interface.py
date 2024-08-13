@@ -86,7 +86,7 @@ class PyTree(pt.trees.BehaviourTree):
         #This return is only reached if there are too few up nodes
         return node
 
-    def run_bt(self, max_ticks=200, max_time=10000.0, show_world=False):
+    def run_bt(self, max_ticks=200, max_time=10000.0, show_world=True):
         """
         Function executing the behavior tree
         """
@@ -110,6 +110,7 @@ class PyTree(pt.trees.BehaviourTree):
             if status_ok:
                 if self.verbose:
                     print("Tick", ticks)
+                print(f"Step BT: Executing action {self.root.name}") 
                 self.root.tick_once()
                 self.world_interface.send_references()
 
@@ -156,6 +157,7 @@ class PyTree(pt.trees.BehaviourTree):
         status_ok = self.world_interface.get_feedback() #Wait for connection
 
         if status_ok:
+            print(f"Step BT: Executing action {self.root.name}") 
             self.root.tick_once()
             self.world_interface.send_references()
 
